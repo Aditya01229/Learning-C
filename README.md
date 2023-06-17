@@ -3,5 +3,5 @@ This folder contains all the codes functions which I defined while learning C. T
 This are the codes for the exercises of the book Let Us C.
 
 
-#Learning C++
+# Learning C++
 Updating the resporitory with the codes of C++.
