@@ -1,9 +1,8 @@
+// Online C compiler to run C program online
 #include <stdio.h>
-int main(int argc, char const *argv[])
-{
-  int a = 15;
-  int b = 10;
-  a = b++;
-  printf("%d %d %d %d", a++, b++, a, ++b);
-  return 0;
+
+int main() {
+    short int a = - 3;
+    printf("%d", a);
+    
 }

@@ -1,32 +1,38 @@
 #include <stdio.h>
-#include <string.h>
-int main(int argc, char const *argv[])
+#include <stdlib.h>
+
+struct Triangle
 {
-    char a[1000];
-    int d=0, dot=0, al=0, size, i, get;
-    // scanf("%s", &a);
-    gets(a);
-    size = strlen(a);
-    printf("%d", size);
-    for(i = 0; i<= size; i++){
-        if(a[i]== '.')
-        dot = 1;
-        if((a[i]>='a' && a[i]<= 'z') || (a[i]>='A' && a[i]<= 'Z'))
-        al = 1;
-        if((a[i]>='0' && a[i]<= '9'))
-        d = 1;
-    }
-    if((d == 1 && dot == 1 && al == 1) || al == 1){
-        printf("STRING");
-    }
-    else if(d == 1 && dot == 1 && al == 0){
-        printf("FLOAT");
-    }
-    else if(d == 1 && dot == 0 && al == 0){
-        printf("INT");
-    }
-    else{
-        printf("SPECIAL");
-    }
-    return 0;
+   int a, b, c;
+};
+
+int square(struct Triangle t)
+{
+    int a = t.a, b = t.b, c = t.c;
+    return (a + b + c)*(a + b - c)*(a - b + c)*(-a + b + c);
+}
+
+void sort_by_square(struct Triangle* a, int n)
+{
+    for (int i = 0; i < n; i++)
+        for (int j = i + 1; j < n; j++)
+            if (square(a[i]) > square(a[j]))
+            {
+                struct Triangle temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+}
+
+int main()
+{
+   int n;
+   scanf("%d", &n);
+   struct Triangle *a = calloc(n, sizeof(struct Triangle));
+   for (int i = 0; i < n; i++)
+      scanf("%d%d%d", &a[i].a, &a[i].b, &a[i].c);
+   sort_by_square(a, n);
+   for (int i = 0; i < n; i++)
+      printf("%d %d %d\n", a[i].a, a[i].b, a[i].c);
+   return 0;
 }

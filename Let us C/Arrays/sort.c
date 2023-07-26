@@ -29,7 +29,7 @@ void selection(int *p, int n)
     }
 }
 
-// BUUBLE SORT
+// BUBBLE SORT
 void bubble(int *p, int n)
 {
     int i, a, b;
